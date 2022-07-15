@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>회원가입하기</title>
+    <link rel="stylesheet" href="assets/css/new_id.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <script>
+        function back() {
+            history.go(-1);
+        }
+
+        function create_id() {
+            var name = document.querySelector('#name')
+            var new_id = document.querySelector('#new_id');
+            var new_pw = document.querySelector('#new_pw');
+            var checkpw = document.querySelector('#checkpw');
+            if (name.value === ""){
+                alert("이름을 다시 입력해주세요.");
+            }
+            else{
+                if (new_id.value === "") {
+                    alert("아이디를 다시 입력해주세요.");
+                }
+                else {
+                    if ((new_pw.value).length < 10 || (new_pw.value).length > 16) {
+                        alert("비밀번호를 다시 입력해주세요.");
+                    }
+                    else {
+                        if(checkpw.value!=new_pw.value){
+                            alert("비밀번호가 일치하지 않습니다.다시 입력해주세요.");
+                        }
+                        else{                       
+                            alert(name.value+"님 회원가입을 축하드립니다!!");
+                            location.href = 'index.html';
+                    }
+                    }
+                }
+            }
+        }
+
+       /* $(document).ready(function () {
+                function login() {
+                    let _name = $('#name').val();
+                    let _id = $('#new_id').val();
+                    let _pw = $('#new_pw').val();
+
+                    $.ajax({
+                        url: './ajex/membersave.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {name: name , id: new_id, pw: new_pw},
+                        success: function (data) {
+                            console.log(data.sql)
+                        },
+                        error: function () {
+                            console.log("실패")
+                        }
+                    })
+
+                }
+
+                $('.login_btn').click(function () {
+                    login();
+                })
+
+
+            })
+            */
+    </script>
+    
+</head>
+
+<body>
+    <!--<form method="post" action="membersave.php">-->
+        <div class="container">
+            <div class="insert">
+
+                <table>
+                    <caption>
+                        <h2>회원가입 양식</h2>
+                    </caption>
+                    <tr>
+                        <td class="col1">이름 <em> * </em> </td>
+                        <td class="col2"><input id="name" type="text" name="name" maxlength="5"></td>
+                    </tr>
+                    <tr>
+                        <td class="col1">아이디 <em> * </em> </td>
+                        <td class="col2">
+                            <input id="new_id" type="text" name="id" maxlength="10">
+                            <input class='but1' type="button" value="중복확인" onclick="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">비밀번호 <em> * </em> </td>
+                        <td class="col2">
+                            <input id="new_pw" type="password" name="pwd" maxlength="16">
+                            <p>※비밀번호는 <span class="num">문자, 숫자, 특수문자(~!@#$%^&*)의 조합
+                                    10 ~ 16자리</span>로 입력이 가능합니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">비밀번호 확인 <em> * </em> </td>
+                        <td class="col2"><input id="checkpw" type="password" name="pwdCheck" maxlength="16"></td>
+                    </tr>
+                    
+<!--
+                    <tr>
+                        <td class="col1">학년/반</td>
+                        <td class="col2"><select name="grade">
+                                <option value="slc1" selected>선택</option>
+                                <option value="g1">1</option>
+                                <option value="g2">2</option>
+                                <option value="g3">3</option>
+                                <option value="g4">4</option>
+                                <option value="g5">5</option>
+                                <option value="g6">6</option>
+                            </select>
+
+                            <span class="g">학년</span>
+
+                            <select name="cls">
+                                <option value="slc2" selected>선택</option>
+                                <option value="c1">1</option>
+                                <option value="c2">2</option>
+                                <option value="c3">3</option>
+                                <option value="c4">4</option>
+                                <option value="c5">5</option>
+                            </select>
+
+                            <span class="c">반</span>
+
+                        </td>
+
+                    </tr>
+-->
+                </table>
+
+            </div>
+
+            <div class="create">
+
+                <input class="but3" type="button" value="가입취소" onclick="back();">
+                <input class="but4" type="button" value="회원가입" onclick="create_id();">
+
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
